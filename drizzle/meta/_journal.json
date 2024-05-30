@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1717066465224,
+      "tag": "0000_vengeful_meteorite",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1717067583470,
+      "tag": "0001_modern_stryfe",
+      "breakpoints": true
+    }
+  ]
+}
