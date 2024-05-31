@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button"
 import * as React from "react"
 import { Input } from "@/components/ui/input"
+import { Trash } from "lucide-react"
 
 import {
   ColumnDef,
@@ -25,7 +26,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Trash } from "lucide-react"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
