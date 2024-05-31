@@ -44,7 +44,7 @@ const app = new Hono()
     }
   )
 
-  .post("/bulk/delete", clerkMiddleware(), zValidator("json",
+  .post("/bulk-delete", clerkMiddleware(), zValidator("json",
     z.object({
       ids : z.array(z.string())
     })),
