@@ -1,9 +1,38 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { Card , CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
 import { Plus } from "lucide-react";
+import { Payment, columns } from "./columns";
+import { DataTable } from "@/components/data-table";
+
+const data : Payment[] = [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    {
+      id: "728ed52f",
+      amount: 200,
+      status: "success",
+      email: "h1@example.com",
+    },
+    {
+      id: "728ed52f",
+      amount: 500,
+      status: "success",
+      email: "h2@example.com",
+    },
+    {
+      id: "728ed52f",
+      amount: 60,
+      status: "failed",
+      email: "h3@example.com",
+    },
+  ]
 
 const AccountPage = () => {
     const newAccount = useNewAccount();
@@ -19,6 +48,9 @@ const AccountPage = () => {
                         Add new
                     </Button>
                 </CardHeader>
+                <CardContent>
+                    <DataTable columns={columns} data={data} filterKey="email" onDelete={() => {}} disabled={false}/>
+                </CardContent>
             </Card>
         </div>
     )
