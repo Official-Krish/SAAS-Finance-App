@@ -2,10 +2,10 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "
 import { AccountForm } from "./account-form";
 import { insertAccountSchema } from "@/db/schema";
 import { z } from "zod";
-import { useCreateAccount } from "../accounts/api/use-create-account";
 import { useOpenAccount } from "../accounts/hooks/use-open-account";
 import { useGetAccount } from "../accounts/api/use-get-account";
 import {  Loader2 } from "lucide-react";
+import { useEditAccount } from "../accounts/api/use-edit-account";
 
 const formSchema = insertAccountSchema.pick({
     name: true,
@@ -15,13 +15,14 @@ type FormValues = z.input<typeof formSchema>;
 
 
 export const EditAccountSheet = () => {
-    const mutation = useCreateAccount();
     const { isOpen, onClose, id} = useOpenAccount();
     const accountQuery = useGetAccount(id);
+    const editMutation = useEditAccount(id);
+    const isPending = editMutation.isPending
     const isLoading = accountQuery.isLoading;
 
     const onSubmit = (values: FormValues) => {
-        mutation.mutate(values, {
+        editMutation.mutate(values, {
           onSuccess: () => {
             onClose();
           },
@@ -50,7 +51,7 @@ export const EditAccountSheet = () => {
                         <Loader2 className="size-4 text-muted-foreground animate-spin"/>
                     </div>
                 ) : (
-                    <AccountForm id={id} onSubmit={onSubmit} disabled={mutation.isPending} defaultValues={defaultValues}/>
+                    <AccountForm id={id} onSubmit={onSubmit} disabled={isPending} defaultValues={defaultValues}/>
 
                 )}
             </SheetContent>
