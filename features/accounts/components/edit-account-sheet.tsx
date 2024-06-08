@@ -2,11 +2,11 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "
 import { AccountForm } from "./account-form";
 import { insertAccountSchema } from "@/db/schema";
 import { z } from "zod";
-import { useOpenAccount } from "../accounts/hooks/use-open-account";
-import { useGetAccount } from "../accounts/api/use-get-account";
+import { useOpenAccount } from "../hooks/use-open-account"; 
+import { useGetAccount } from "../api/use-get-account"; 
 import {  Loader2 } from "lucide-react";
-import { useEditAccount } from "../accounts/api/use-edit-account";
-import { useDeleteAccount } from "../accounts/api/use-delete-account";
+import { useEditAccount } from "../api/use-edit-account"; 
+import { useDeleteAccount } from "../api/use-delete-account"; 
 import { useConfirm } from "@/hooks/use-confirm";
 
 const formSchema = insertAccountSchema.pick({
@@ -20,7 +20,7 @@ export const EditAccountSheet = () => {
     const { isOpen, onClose, id} = useOpenAccount();
     const [ConfirmDialog, confirm] = useConfirm(
         "Are you sure?",
-        "You are about to delete your transaction."
+        "You are about to delete your account."
     )
     const accountQuery = useGetAccount(id);
     const editMutation = useEditAccount(id);
