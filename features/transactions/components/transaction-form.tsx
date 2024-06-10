@@ -15,10 +15,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-const formSchema = insertAccountSchema.pick({
-  name: true,
-});
-
+const formSchema = z.object({
+  date : z.coerce.date(),
+  accountId : z.string(),
+  categoryId : z.string().nullable().optional(),
+  payee: z.string(),
+  amount: z.string(),
+  notes: z.string().nullable().optional()
+})
 type FormValues = z.input<typeof formSchema>;
 
 type Props = {
@@ -29,7 +33,7 @@ type Props = {
   disabled?: boolean;
 };
 
-export const AccountForm = ({
+export const TransactionForm = ({
   id,
   defaultValues,
   onSubmit,

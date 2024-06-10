@@ -6,6 +6,9 @@ import { EditAccountSheet } from "@/features/accounts/components/edit-account-sh
 import { CategorySheet } from "@/features/Categories/components/new-category-sheet"; 
 import { EditCategorySheet } from "@/features/Categories/components/edit-category-sheet"; 
 
+import { NewTransactionSheet } from "@/features/transactions/components/new-transaction-sheet";
+
+
 export const SheetProvider = () => {
     const isMounted = useMountedState();
     if (!isMounted) return null;
@@ -16,6 +19,8 @@ export const SheetProvider = () => {
 
         <CategorySheet/>
         <EditCategorySheet/>
+
+        <NewTransactionSheet/>
         </>
     )
 }
