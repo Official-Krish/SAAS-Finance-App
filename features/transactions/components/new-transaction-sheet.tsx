@@ -7,8 +7,8 @@ import { useCreateCategory } from "@/features/Categories/api/use-create-category
 import { useGetCategories } from "@/features/Categories/api/use-get-categories";
 import { useCreateAccount } from "@/features/accounts/api/use-create-account";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
-import { TransactionForm } from "./transaction-form";
 import { Loader2 } from "lucide-react";
+import { TransactionForm } from "./transaction-form";
 
 
 const formSchema = insertTransactionSchema.omit({
@@ -64,7 +64,7 @@ export const NewTransactionSheet = () => {
                         <Loader2 className="size-4 text-muted-foreground animate-spin"/>
                     </div>
                 ) : (
-                    <TransactionForm onSubmit={onSubmit} disabled={isPending} categoryOptions={categoryOptions} accountOptions={accountOptions} onCreateAccount={onCreateAccount}/>
+                    <TransactionForm onSubmit={onSubmit} disabled={isPending} categoryOptions={categoryOptions} accountOptions={accountOptions} onCreateAccount={onCreateAccount} onCreateCategory={onCreatecategory}/>
                 )}
                 
             </SheetContent>
